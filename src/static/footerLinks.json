@@ -1,0 +1,39 @@
+[
+    {
+        "heading": "information",
+        "links": [
+            {"label": "about us", "href": "./about"},
+            {"label": "information", "href": "./information"},
+            {"label": "privacy policy", "href": "./privacy_policy"},
+            {"label": "terms & conditions", "href": "./terms_&_conditions"}
+        ]
+    },
+    {
+        "heading": "service",
+        "links": [
+            {"label": "about us", "href": "./about"},
+            {"label": "information", "href": "./information"},
+            {"label": "privacy policy", "href": "./privacy_policy"},
+            {"label": "terms & conditions", "href": "./terms_&_conditions"}
+        ]
+    },
+    {
+        "heading": "my account",
+        "links": [
+            {"label": "about us", "href": "./about"},
+            {"label": "information", "href": "./information"},
+            {"label": "privacy policy", "href": "./privacy_policy"},
+            {"label": "terms & conditions", "href": "./terms_&_conditions"}
+        ]
+    },
+    {
+        "heading": "our offers",
+        "links": [
+            {"label": "about us", "href": "./about"},
+            {"label": "information", "href": "./information"},
+            {"label": "privacy policy", "href": "./privacy_policy"},
+            {"label": "terms & conditions", "href": "./terms_&_conditions"}
+        ]
+    }
+]
+
