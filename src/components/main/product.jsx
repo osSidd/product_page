@@ -1,17 +1,16 @@
-import ProductCard from "./product_card";
+import ProductCard from './product_card'
 
-export default function Products(){
+export default function Products({products, view}){
+
+    if(!products) return null
+
     return(
-        <section className="grid grid-cols-3 gap-x-12 gap-y-8 mt-6">
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
+        <section className={`${view === 'grid' ? 'grid grid-cols-3 gap-x-12 gap-y-8' : null}  mt-6`}>
+            {
+                products.map(product => (
+                    <ProductCard product={product} view={view} key={product.id}/>
+                ))
+            }
         </section>
     )
 }
