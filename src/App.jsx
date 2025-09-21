@@ -13,7 +13,7 @@ export default function App(){
     <div>
       <Header/>
       <div className="grid grid-cols-12 gap-x-8 px-6 pt-9 pb-6">
-        <Sidebar products={state.originalProductList} dispatch={dispatch}/>
+        <Sidebar products={state.originalProductList} filters={state.filters} dispatch={dispatch}/>
         <Main products={state.products}/>
       </div>
       <Footer/>

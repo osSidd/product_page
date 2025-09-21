@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useView from "../../hooks/useView";
 import Brand from "./brand";
 import Color from "./color";
@@ -6,13 +5,11 @@ import Deals from "./deals";
 import Prices from "./price";
 import ViewMoreBtn from "./view_more_btn";
 
-export default function Sidebar({products, dispatch}){
+export default function Sidebar({products, filters, dispatch}){
 
     const {viewMore, toggleView} = useView(products)
 
-    const [deals, setDeals] = useState([])
-    const [brands, setBrands] = useState([])
-    const [colors, setColors] = useState([])
+    const {deals, brands, colors, price} = filters
 
     function toggleDeal(val){
         if(deals.includes(val)){
@@ -24,13 +21,11 @@ export default function Sidebar({products, dispatch}){
                 type: 'SET_DEAL',
                 payload: arr,
             })
-            setDeals(arr)
         }else{
             dispatch({
                 type: 'SET_DEAL',
                 payload: deals.concat(val),
             })
-            setDeals(prev => prev.concat(val))
         }
     }
 
@@ -44,13 +39,11 @@ export default function Sidebar({products, dispatch}){
                 type: 'SET_BRAND',
                 payload: arr,
             })
-            setBrands(arr)
         }else{
             dispatch({
                 type: 'SET_BRAND',
                 payload: brands.concat(val),
             })     
-            setBrands(prev => prev.concat(val))
         }       
     }
 
@@ -64,20 +57,29 @@ export default function Sidebar({products, dispatch}){
                 type: 'SET_COLOR',
                 payload: arr,
             })
-            setColors(arr)
         }else{
             dispatch({
                 type: 'SET_COLOR',
                 payload: colors.concat(val),
             })
-            setColors(prev => prev.concat(val))
         }    
+    }
+
+    function togglePrice(e){
+        const {name, value} = e.target
+        dispatch({
+            type: 'SET_PRICE',
+            payload: {
+                ...price,
+                [name]: +value
+            }
+        })
     }
 
     return(
         <aside className="col-span-3">
             <Deals products={products} deals={deals} toggleDeal={toggleDeal}/>
-            <Prices products={products}/>
+            <Prices price={price} togglePrice={togglePrice}/>
             {!viewMore ? 
             <>
                 <Color products={products} productColor={colors} toggleColor={toggleColor}/>

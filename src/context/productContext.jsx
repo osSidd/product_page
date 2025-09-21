@@ -28,6 +28,14 @@ function reducer(state, action){
                 filters: filterColors,
                 products: applyFilters(state.originalProductList, filterColors)
             }
+        
+        case 'SET_PRICE':
+            const filterPrice = {...state.filters, price: action.payload}
+            return {
+                ...state,
+                filters: filterPrice,
+                products: applyFilters(state.originalProductList, filterPrice)
+            }
 
         default:
             return state
@@ -52,6 +60,8 @@ function applyFilters(products, filters){
             }
             if(!flag) return false
         }
+
+        if(!(product.discountedPrice >= filters.price.min && product.discountedPrice <= filters.price.max)) return false
     
         return true
         
@@ -64,7 +74,7 @@ export default function ProductContextProvider({children}){
     const [state, dispatch] = useReducer(reducer, {
         products: products,
         originalProductList: products,
-        filters: {deals: [], brands: [], colors: [], price: {min: null, max: null}}
+        filters: {deals: [], brands: [], colors: [], price: {min: 30, max: 350}}
 
     })
     

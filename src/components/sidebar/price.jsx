@@ -1,9 +1,8 @@
-import { getPriceRange } from "../../functions/functions";
 import Template from "./templateCard";
 
-export default function Prices({products}){
+export default function Prices({price, togglePrice}){
 
-    const {min, max} = getPriceRange(products)
+    const {min, max} = price
 
     return(
         <Template heading='prices'>
@@ -12,7 +11,10 @@ export default function Prices({products}){
                     <span className="capitalize">ranger&#58;</span>
                     <span>&#36;{min} - &#36;{max}</span>
                 </div>
-                <input type="range" name="" min={min} max={max} step={2} id="" />
+                <div className="w-full">
+                    <input onChange={togglePrice} type="range" value={max} max={350} min={min + 50} step={5} className="w-full" name="max"/>
+                    <input onChange={togglePrice} type="range" value={min} min={30} max={max - 50} step={5} className="w-full" name="min"/>
+                </div>
             </div>
         </Template>
 
