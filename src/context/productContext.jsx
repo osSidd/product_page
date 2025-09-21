@@ -4,16 +4,68 @@ import products from '../static/products.json'
 export const ProductContext = createContext()
 
 function reducer(state, action){
-    switch(action){
-        case 'GET_ALL_PRODUCTS':
-            return products
+    switch(action.type){
+        case 'SET_DEAL':
+            const filterdeals = {...state.filters, deals: action.payload} 
+            return {
+                ...state,
+                filters: filterdeals,
+                products: applyFilters(state.originalProductList, filterdeals)
+            }
+
+        case 'SET_BRAND':
+            const filterbrands = {...state.filters, brands: action.payload} 
+            return {
+                ...state,
+                filters: filterbrands,
+                products: applyFilters(state.originalProductList, filterbrands)
+            }
+
+        case 'SET_COLOR':
+            const filterColors = {...state.filters, colors: action.payload} 
+            return {
+                ...state,
+                filters: filterColors,
+                products: applyFilters(state.originalProductList, filterColors)
+            }
+
+        default:
+            return state
     }
+}
+
+function applyFilters(products, filters){
+    return products.filter(product => {
+        
+        if(filters.deals.length){
+            if(!product.isHot) return false
+            if(!filters.deals.includes(product.brand)) return false
+        }
+
+        if(filters.brands.length)
+            if(!filters.brands.includes(product.brand)) return false
+
+        if(filters.colors.length){
+            let flag = false
+            for(let i = 0; i< product.colors.length; i++){
+                if(filters.colors.includes(product.colors[i])) flag = true
+            }
+            if(!flag) return false
+        }
+    
+        return true
+        
+
+    })
 }
 
 export default function ProductContextProvider({children}){
     
     const [state, dispatch] = useReducer(reducer, {
-        products: products
+        products: products,
+        originalProductList: products,
+        filters: {deals: [], brands: [], colors: [], price: {min: null, max: null}}
+
     })
     
     return (

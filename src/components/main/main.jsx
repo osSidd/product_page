@@ -22,7 +22,7 @@ export default function Main({products}){
 
         setProductArr(slicedArr)
 
-    }, [productQty, pageNo])
+    }, [productQty, pageNo, products])
 
     function toggleProductQty(e){
         const val = e.target.value

@@ -14,6 +14,13 @@ export default function ProductCard({product, view}){
                         <span className='ml-2 text-red-400 text-sm font-bold'>{product.discountPercent}&#37; off</span>
                     </div>
                 </div>
+                <div>
+                    {
+                        product.colors.map(color => (
+                            <p key={color}>{color}</p>
+                        ))
+                    }
+                </div>
             </div>
             {
                 product.isHot ? 
