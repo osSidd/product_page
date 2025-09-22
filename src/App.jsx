@@ -1,22 +1,26 @@
-import Footer from "./components/footer/footer";
-import Header from "./components/header/header";
-import Main from "./components/main/main";
-import Sidebar from './components/sidebar/sidebar'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
-import useProductContext from "./hooks/useProductContext";
+import Home from './pages/home'
+import Bag from './pages/bag'
+import Sneakers from './pages/sneakers'
+import Belt from './pages/belt'
+import Contact from './pages/contact'
+import Cart from './pages/cart'
+import Error from './pages/error'
 
 export default function App(){
 
-  const {state, dispatch} = useProductContext()
-
   return(
-    <div>
-      <Header/>
-      <div className="grid grid-cols-12 gap-x-8 px-6 pt-9 pb-6">
-        <Sidebar products={state.originalProductList} filters={state.filters} dispatch={dispatch}/>
-        <Main products={state.products}/>
-      </div>
-      <Footer/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/bag' element={<Bag/>}/>
+        <Route path='/sneakers' element={<Sneakers/>}/>
+        <Route path='/belt' element={<Belt/>}/>
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='*' element={<Error/>}/>
+      </Routes>      
+    </BrowserRouter>
   )
 }

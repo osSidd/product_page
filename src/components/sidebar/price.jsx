@@ -12,8 +12,12 @@ export default function Prices({price, togglePrice}){
                     <span>&#36;{min} - &#36;{max}</span>
                 </div>
                 <div className="w-full">
-                    <input onChange={togglePrice} type="range" value={max} max={350} min={min + 50} step={5} className="w-full" name="max"/>
-                    <input onChange={togglePrice} type="range" value={min} min={30} max={max - 50} step={5} className="w-full" name="min"/>
+                    <label htmlFor="max">max
+                        <input id="max" onChange={togglePrice} type="range" value={max} max={350} min={min + 50} step={5} className="w-full" name="max"/>
+                    </label>
+                    <label htmlFor="min">min
+                        <input id="min" onChange={togglePrice} type="range" value={min} min={30} max={max - 50} step={5}     className="w-full" name="min"/>
+                    </label>
                 </div>
             </div>
         </Template>
