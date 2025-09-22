@@ -8,7 +8,7 @@ export default function FilterSection({products, productQty, view, sortValue, to
     return (
         <aside className="flex items-center justify-between px-6 py-4 my-4 bg-gray-100 ">
             <p className="text-lg font-normal">{products.length} items</p>
-            <form action="" className="w-6/12">
+            <form action="" className="">
                 <label htmlFor="" className="text-lg font-normal capitalize">sort by
                     <select name="" id="" value={sortValue} onChange={toggleSort} className=" capitalize cursor-pointer mx-8" >
                         {

@@ -7,7 +7,7 @@ import Products from "./product";
 
 import { sortProducts } from "../../functions/functions";
 
-export default function Main({products}){
+export default function Main({products, sidebarView}){
 
     const [productQty, setProductQty] = useState(12)
     const [sortValue, setSortValue] = useState('name')
@@ -50,7 +50,7 @@ export default function Main({products}){
     }   
 
     return(
-        <main className="col-span-9">
+        <main className={`${sidebarView ? "col-span-9" : "col-start-1 col-span-12"}`}>
             <HeroBanner/>
             <FilterSection 
                 toggleView={toggleView} 
@@ -64,6 +64,7 @@ export default function Main({products}){
             <Products 
                 view={view} 
                 products={productArr}
+                sidebarView={sidebarView}
             />
             <Pagination 
                 productQty={productQty} 

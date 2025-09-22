@@ -5,7 +5,7 @@ import Deals from "./deals";
 import Prices from "./price";
 import ViewMoreBtn from "./view_more_btn";
 
-export default function Sidebar({products, filters, dispatch}){
+export default function Sidebar({products, filters, dispatch, sidebarView, toggleSidebarView}){
 
     const {viewMore, toggleView} = useView(products)
 
@@ -77,7 +77,7 @@ export default function Sidebar({products, filters, dispatch}){
     }
 
     return(
-        <aside className="col-span-3">
+        <aside className={` ${sidebarView ? "col-span-3" : "w-0 hidden overflow-hidden"}  relative`}>
             <Deals products={products} deals={deals} toggleDeal={toggleDeal}/>
             <Prices price={price} togglePrice={togglePrice}/>
             {!viewMore ? 
@@ -87,6 +87,10 @@ export default function Sidebar({products, filters, dispatch}){
             </> : null}
             <div className="uppercase cursor-pointer bg-gray-100 py-4 text-center text-xl font-medium">
                 <ViewMoreBtn viewMore={viewMore} toggleView={toggleView}/>
+            </div>
+            {/* <div className={`${sidebarView ? "top-0 right-0" : "top-0 right-0"} "absolute bg-gray-200 flex items-center justify-center cursor-pointer w-10 h-10"`}> */}
+            <div className={`${sidebarView ? "top-0 right-0": "top-32 left-0"} " absolute bg-gray-200 flex items-center justify-center cursor-pointer p-2 w-12 h-12"`}>
+                {sidebarView ? <img onClick={toggleSidebarView} className=" w-6 h-6" src="./collapse.svg" alt="collapse sidebar icon"/> : null}
             </div>
         </aside>
     )
