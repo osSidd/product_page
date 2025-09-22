@@ -6,7 +6,7 @@ export default function Pagination({productQty, pageNo, products, togglePageNo})
 
     return(
         <section className="bg-gray-100 mt-8">
-            <ul className="flex items-center justify-center">
+            <ul className="flex items-center justify-center flex-wrap md:flex-nowrap">
                 {
                     pages.map(page => (
                         <li 

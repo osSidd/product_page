@@ -1,10 +1,10 @@
 import Footer from "../components/footer/footer"
 import Header from "../components/header/header"
 
-export default function PageTemplate({children}){
+export default function PageTemplate({children, cart}){
     return(
         <>
-            <Header/>
+            <Header cart={cart}/>
                 {children}
             <Footer/>
         </>

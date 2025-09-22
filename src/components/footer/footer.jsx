@@ -7,7 +7,7 @@ import Copyright from "./copyright";
 
 export default function Footer(){
     return(
-        <footer className=" grid grid-cols-12 gap-4 items-start bg-blue-200 py-24 px-28 gap-y-10">
+        <footer className=" md:grid grid-cols-12 gap-4 items-start bg-blue-200 py-24 px-16 md:px-28 gap-y-10">
             <Description/>
             <Social/>
             <Contact/>

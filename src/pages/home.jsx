@@ -16,7 +16,7 @@ export default function Home(){
 
     return(
         <>
-            <PageTemplate>
+            <PageTemplate cart={state.cart}>
                 <div className="grid grid-cols-12 gap-x-8 px-6 pt-9 pb-6 relative">
                     <div className={` ${!sidebarView ? " absolute top-12   left-8" : " hidden" } flex items-center justify-center w-10 h-10 bg-gray-200`}>
                         <img onClick={toggleSidebarView} className="w-6 h-6" src="./show.svg"  alt="show sidebar icon"/>
@@ -29,7 +29,12 @@ export default function Home(){
                         sidebarView={sidebarView}
                         toggleSidebarView={toggleSidebarView}
                     />
-                    <Main products={state.products} sidebarView={sidebarView}/>
+                    <Main 
+                        products={state.products} 
+                        sidebarView={sidebarView} 
+                        cart={state.cart}
+                        dispatch={dispatch}
+                    />
                 </div>
             </PageTemplate>
         </>

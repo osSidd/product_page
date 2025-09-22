@@ -12,7 +12,7 @@ export default function Navbar(){
 
     return(
         <nav className="w-7/12">
-            <ul className=" text-xl font-medium uppercase flex items-center justify-between">
+            <ul className="hidden md:flex text-xl font-medium uppercase items-center justify-between">
                 {
                     navLinks.map(link => (
                         <li key={link.label}>

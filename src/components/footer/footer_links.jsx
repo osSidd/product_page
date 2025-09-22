@@ -1,6 +1,6 @@
 export default function FooterLink({heading, links}){
     return (
-        <section className="col-span-3">
+        <section className="mt-8 md:mt-0 md:col-span-3">
             <h2 className="text-lg font-medium capitalize">{heading}</h2>
             <ul className="mt-4">
                 {

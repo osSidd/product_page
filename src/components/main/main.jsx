@@ -7,7 +7,7 @@ import Products from "./product";
 
 import { sortProducts } from "../../functions/functions";
 
-export default function Main({products, sidebarView}){
+export default function Main({products, sidebarView, cart, dispatch}){
 
     const [productQty, setProductQty] = useState(12)
     const [sortValue, setSortValue] = useState('name')
@@ -49,8 +49,15 @@ export default function Main({products, sidebarView}){
         return products.slice((productQty*(pageNo - 1)), (productQty * pageNo))
     }   
 
+    function addToCart(val){
+        dispatch({
+            type: 'ADD_TO_CART',
+            payload: val
+        })
+    }
+
     return(
-        <main className={`${sidebarView ? "col-span-9" : "col-start-1 col-span-12"}`}>
+        <main className={`col-span-12 ${sidebarView ? "lg:col-span-9" : "col-start-1 col-span-12"}`}>
             <HeroBanner/>
             <FilterSection 
                 toggleView={toggleView} 
@@ -65,6 +72,8 @@ export default function Main({products, sidebarView}){
                 view={view} 
                 products={productArr}
                 sidebarView={sidebarView}
+                cart={cart}
+                addToCart={addToCart}
             />
             <Pagination 
                 productQty={productQty} 

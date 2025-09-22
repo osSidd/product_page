@@ -117,6 +117,15 @@ function sortProducts(products, field){
     })
 }
 
+function getRatingArr(rating){
+    if(rating === 5) return [1,2,3,4,5]
+    if(rating > 4) return [1,2,3,4,4.5]
+    if(rating  === 4) return [1,2,3,4]
+    if(rating >= 3) return [1,2,3]
+    if(rating >=2) return [1,2]
+    return [1]
+}
+
 export {
     getBrandNQty,
     getHotDeals,
@@ -125,4 +134,5 @@ export {
     getPdtQtyRange,
     sortProducts,
     getPages,
+    getRatingArr
 }

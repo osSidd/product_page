@@ -36,6 +36,12 @@ function reducer(state, action){
                 filters: filterPrice,
                 products: applyFilters(state.originalProductList, filterPrice)
             }
+        
+        case 'ADD_TO_CART':
+            return {
+                ...state,
+                cart: state.cart + action.payload
+            }
 
         default:
             return state
@@ -74,8 +80,8 @@ export default function ProductContextProvider({children}){
     const [state, dispatch] = useReducer(reducer, {
         products: products,
         originalProductList: products,
-        filters: {deals: [], brands: [], colors: [], price: {min: 30, max: 350}}
-
+        filters: {deals: [], brands: [], colors: [], price: {min: 30, max: 350}},
+        cart: 0
     })
     
     return (

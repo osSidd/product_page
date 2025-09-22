@@ -77,7 +77,7 @@ export default function Sidebar({products, filters, dispatch, sidebarView, toggl
     }
 
     return(
-        <aside className={` ${sidebarView ? "col-span-3" : "w-0 hidden overflow-hidden"}  relative`}>
+        <aside className={` hidden ${sidebarView ? "lg:block col-span-3" : "w-0 hidden overflow-hidden"}  relative`}>
             <Deals products={products} deals={deals} toggleDeal={toggleDeal}/>
             <Prices price={price} togglePrice={togglePrice}/>
             {!viewMore ? 
